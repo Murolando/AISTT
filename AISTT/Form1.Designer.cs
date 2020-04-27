@@ -1,6 +1,6 @@
 ﻿namespace AISTT
 {
-    partial class Form1
+    partial class mainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -73,28 +73,28 @@
             // newFileM
             // 
             this.newFileM.Name = "newFileM";
-            this.newFileM.Size = new System.Drawing.Size(180, 22);
+            this.newFileM.Size = new System.Drawing.Size(112, 22);
             this.newFileM.Text = "New";
             this.newFileM.Click += new System.EventHandler(this.newFileM_Click);
             // 
             // openFileM
             // 
             this.openFileM.Name = "openFileM";
-            this.openFileM.Size = new System.Drawing.Size(180, 22);
+            this.openFileM.Size = new System.Drawing.Size(112, 22);
             this.openFileM.Text = "Open";
             this.openFileM.Click += new System.EventHandler(this.openFileM_Click);
             // 
             // saveFileM
             // 
             this.saveFileM.Name = "saveFileM";
-            this.saveFileM.Size = new System.Drawing.Size(180, 22);
+            this.saveFileM.Size = new System.Drawing.Size(112, 22);
             this.saveFileM.Text = "Save";
             this.saveFileM.Click += new System.EventHandler(this.saveFileM_Click);
             // 
             // saveAsFilem
             // 
             this.saveAsFilem.Name = "saveAsFilem";
-            this.saveAsFilem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsFilem.Size = new System.Drawing.Size(112, 22);
             this.saveAsFilem.Text = "Save as";
             this.saveAsFilem.Click += new System.EventHandler(this.saveAsFilem_Click);
             // 
@@ -179,7 +179,7 @@
             this.panel1.Size = new System.Drawing.Size(530, 426);
             this.panel1.TabIndex = 0;
             // 
-            // Form1
+            // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,9 +187,10 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "mainForm";
+            this.Text = "AIST";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);

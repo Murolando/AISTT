@@ -12,16 +12,31 @@ using System.Windows.Forms;
 
 namespace AISTT
 {
-    public partial class Form1 : Form
+    public partial class mainForm : Form
     {
         static string filePath { get; set; }
-        public Form1()
+        public mainForm()
         {
             InitializeComponent();
         }
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (mainTextBox.Text != "")
+            {
 
-        private void Form1_Load(object sender, EventArgs e)
-        {    
+                if (MessageBox.Show("Вы хотите сохранить изменения?", "AIST", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (filePath == null)
+                    {
+                        FileManager.SaveTextAs(mainTextBox.Text);
+
+                    }
+                    else
+                    {
+                        FileManager.SaveText(filePath, mainTextBox.Text);
+                    }
+                }
+            }
         }
         //создать новый файл
         private void newFileM_Click(object sender, EventArgs e)
@@ -79,5 +94,7 @@ namespace AISTT
         {
             mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);
         }
+
+      
     }
 }
