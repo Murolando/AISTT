@@ -19,6 +19,38 @@ namespace AISTT
         {
             InitializeComponent();
         }
+
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+            //mainTextBox.AllowDrop = true;
+        }
+
+       //tests
+        private void panel1_DragDrop(object sender, DragEventArgs e)
+        {   
+            textBox1.Text = e.Data.GetData(DataFormats.Text).ToString();
+        }
+        private void panel1_DragEnter(object sender, DragEventArgs e)
+        {
+            textBox1.Text = e.Data.GetData(DataFormats.Text).ToString();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //Закрытие приложения
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (mainTextBox.Text != "")
@@ -95,6 +127,6 @@ namespace AISTT
             mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);
         }
 
-      
+        
     }
 }

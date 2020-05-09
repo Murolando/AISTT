@@ -36,10 +36,11 @@
             this.saveAsFilem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.mainTextBox = new System.Windows.Forms.RichTextBox();
             this.fontNum = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.mainTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -47,6 +48,7 @@
             this.splitContainer1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontNum)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -117,14 +119,25 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.mainTextBox);
             this.panel2.Controls.Add(this.fontNum);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.mainTextBox);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(266, 426);
             this.panel2.TabIndex = 0;
+            // 
+            // mainTextBox
+            // 
+            this.mainTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainTextBox.Location = new System.Drawing.Point(7, 26);
+            this.mainTextBox.Name = "mainTextBox";
+            this.mainTextBox.Size = new System.Drawing.Size(256, 388);
+            this.mainTextBox.TabIndex = 3;
+            this.mainTextBox.Text = "";
             // 
             // fontNum
             // 
@@ -158,26 +171,26 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Шрифт";
             // 
-            // mainTextBox
-            // 
-            this.mainTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainTextBox.Location = new System.Drawing.Point(4, 26);
-            this.mainTextBox.Multiline = true;
-            this.mainTextBox.Name = "mainTextBox";
-            this.mainTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.mainTextBox.Size = new System.Drawing.Size(259, 397);
-            this.mainTextBox.TabIndex = 0;
-            // 
             // panel1
             // 
+            this.panel1.AllowDrop = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(530, 426);
             this.panel1.TabIndex = 0;
+            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
+            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
+            // 
+            // textBox1
+            // 
+            this.textBox1.AllowDrop = true;
+            this.textBox1.Location = new System.Drawing.Point(134, 36);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // mainForm
             // 
@@ -191,6 +204,7 @@
             this.Text = "AIST";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -200,6 +214,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontNum)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,8 +233,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.NumericUpDown fontNum;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox mainTextBox;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RichTextBox mainTextBox;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
