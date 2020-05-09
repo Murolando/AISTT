@@ -26,9 +26,10 @@ namespace AISTT
             //mainTextBox.AllowDrop = true;
         }
 
-       //tests
+
+        //tests
         private void panel1_DragDrop(object sender, DragEventArgs e)
-        {   
+        {
             textBox1.Text = e.Data.GetData(DataFormats.Text).ToString();
         }
         private void panel1_DragEnter(object sender, DragEventArgs e)
