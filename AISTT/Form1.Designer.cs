@@ -39,8 +39,9 @@
             this.mainTextBox = new System.Windows.Forms.RichTextBox();
             this.fontNum = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.mapPanel = new System.Windows.Forms.Panel();
+            this.HPButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -48,7 +49,7 @@
             this.splitContainer1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontNum)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.mapPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -112,7 +113,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
+            this.splitContainer1.Panel2.Controls.Add(this.mapPanel);
             this.splitContainer1.Size = new System.Drawing.Size(800, 426);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 1;
@@ -133,6 +134,7 @@
             this.mainTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainTextBox.EnableAutoDragDrop = true;
             this.mainTextBox.Location = new System.Drawing.Point(7, 26);
             this.mainTextBox.Name = "mainTextBox";
             this.mainTextBox.Size = new System.Drawing.Size(256, 388);
@@ -171,26 +173,38 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Шрифт";
             // 
-            // panel1
+            // mapPanel
             // 
-            this.panel1.AllowDrop = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(530, 426);
-            this.panel1.TabIndex = 0;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
-            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
+            this.mapPanel.AllowDrop = true;
+            this.mapPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.mapPanel.Controls.Add(this.HPButton);
+            this.mapPanel.Controls.Add(this.label2);
+            this.mapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapPanel.Location = new System.Drawing.Point(0, 0);
+            this.mapPanel.Name = "mapPanel";
+            this.mapPanel.Size = new System.Drawing.Size(530, 426);
+            this.mapPanel.TabIndex = 0;
+            this.mapPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.mapPanel_DragDrop);
+            this.mapPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.mapPanel_DragEnter);
             // 
-            // textBox1
+            // HPButton
             // 
-            this.textBox1.AllowDrop = true;
-            this.textBox1.Location = new System.Drawing.Point(134, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.HPButton.Location = new System.Drawing.Point(50, 2);
+            this.HPButton.Name = "HPButton";
+            this.HPButton.Size = new System.Drawing.Size(83, 23);
+            this.HPButton.TabIndex = 2;
+            this.HPButton.Text = "целое/часть";
+            this.HPButton.UseVisualStyleBackColor = true;
+            this.HPButton.Click += new System.EventHandler(this.HPButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Связи:";
             // 
             // mainForm
             // 
@@ -214,8 +228,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontNum)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.mapPanel.ResumeLayout(false);
+            this.mapPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,9 +247,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.NumericUpDown fontNum;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel mapPanel;
         private System.Windows.Forms.RichTextBox mainTextBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button HPButton;
+        private System.Windows.Forms.Label label2;
     }
 }
 
