@@ -6,18 +6,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace AISTT
 {
     public class Buttonn
     {
+
+        [XmlAttribute]
         public string Name { get; set; }
+        [XmlAttribute]
         public string Text { get; set; }
+
+       // [XmlAttribute]
         public Point position { get; set; }
+
+        [XmlElement("Connections")]
         public List<Pair<int,int>> connections { get; set; }
+        [XmlAttribute]
         public int buttonId { get; set; }
         
-        //public 
+        public Buttonn()
+        {
+
+        }
         
         public Buttonn(string Name,string Text, Point position , int buttonId, List<Pair<int,int>> connections)
         {
