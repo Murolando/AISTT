@@ -33,25 +33,26 @@ namespace AISTT
             if (vertexes != 1)
                 return;
            
-            Graphics gr= mapPanel.CreateGraphics();
+            Graphics gr= pictureBox1.CreateGraphics();
             Pen p = new Pen(Color.Black, 5);// цвет линии и ширина
             gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
             gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
         
-    }
+        }
 
+        //Создание вершин сети, посредством перетаскивания текста из mainTextBox
 
-    //Создание вершин сети, посредством перетаскивания текста из mainTextBox
-    private void makeNewVertex(string e)
+        private void makeNewVertex(string e)
         {
             Point position = Cursor.Position;
-         
+            int i = 0;
+            i++;
             Button temp = new Button();
             int hight = Convert.ToInt32(temp.Font.Size * 1);
             int weight = Convert.ToInt32(temp.Font.Size * e.Length + temp.Font.Size);
             temp.Text = e;
             temp.Width = 20;
-            temp.Size = new System.Drawing.Size(20,30 );
+            temp.Size = new System.Drawing.Size(20, 30);
             temp.Location = new Point(position.X, position.Y - 30);
             //убрали обводку
             temp.FlatAppearance.BorderSize = 0;
@@ -60,11 +61,15 @@ namespace AISTT
             temp.Click += new EventHandler(FieldClick);
             this.Controls.Add(temp);
             temp.BringToFront();
+            Buttonn versh = new Buttonn("versh", temp.Text, position,i, new List<Pair<int,int>> () );
         }
 
-        //выбор вершин
+        //выбор вершин для соединения
         Point[] conntect = new Point[2];
         int vertexes=-1;
+
+
+        //нажатие
         void FieldClick(object sender, EventArgs e)
         {
             var button = sender as Button;
@@ -95,6 +100,8 @@ namespace AISTT
 
 
         }
+
+
         //перетаскивание
         private void mapPanel_DragDrop(object sender, DragEventArgs e)
         {
@@ -106,7 +113,7 @@ namespace AISTT
         }
 
 
-        #region 
+        #region сохранение файлов
 
         //Закрытие приложения
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -187,6 +194,25 @@ namespace AISTT
             mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);
         }
 
-       
+
+
+
+        #region доп функции,которых пока нет
+        //отменить последнее действие
+        private void BackButton_Click(object sender, EventArgs e)
+       {
+
+       }
+
+       //Удаление вершин 
+       private void ClearButton_Click(object sender, EventArgs e)
+       {
+
+       }
+        #endregion
+
+
+
+
     }
 }
