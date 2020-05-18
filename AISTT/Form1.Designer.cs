@@ -34,22 +34,22 @@
             this.openFileM = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileM = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsFilem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.BackButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearButton = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.mainTextBox = new System.Windows.Forms.RichTextBox();
             this.fontNum = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.mapPanel = new System.Windows.Forms.Panel();
-            this.HPButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.BackButton = new System.Windows.Forms.ToolStripMenuItem();
-            this.ClearButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.HPButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -88,30 +88,49 @@
             // newFileM
             // 
             this.newFileM.Name = "newFileM";
-            this.newFileM.Size = new System.Drawing.Size(180, 22);
+            this.newFileM.Size = new System.Drawing.Size(128, 22);
             this.newFileM.Text = "New";
             this.newFileM.Click += new System.EventHandler(this.newFileM_Click);
             // 
             // openFileM
             // 
             this.openFileM.Name = "openFileM";
-            this.openFileM.Size = new System.Drawing.Size(180, 22);
+            this.openFileM.Size = new System.Drawing.Size(128, 22);
             this.openFileM.Text = "Open";
             this.openFileM.Click += new System.EventHandler(this.openFileM_Click);
             // 
             // saveFileM
             // 
             this.saveFileM.Name = "saveFileM";
-            this.saveFileM.Size = new System.Drawing.Size(180, 22);
+            this.saveFileM.Size = new System.Drawing.Size(128, 22);
             this.saveFileM.Text = "Save";
             this.saveFileM.Click += new System.EventHandler(this.saveFileM_Click);
             // 
             // saveAsFilem
             // 
             this.saveAsFilem.Name = "saveAsFilem";
-            this.saveAsFilem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsFilem.Size = new System.Drawing.Size(128, 22);
             this.saveAsFilem.Text = "Save as";
             this.saveAsFilem.Click += new System.EventHandler(this.saveAsFilem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(125, 6);
+            // 
+            // BackButton
+            // 
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(128, 22);
+            this.BackButton.Text = "Отменить";
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(128, 22);
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // splitContainer1
             // 
@@ -126,6 +145,12 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.mapPanel);
+            this.splitContainer1.Panel2.Controls.Add(this.button4);
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.button3);
+            this.splitContainer1.Panel2.Controls.Add(this.HPButton);
+            this.splitContainer1.Panel2.Controls.Add(this.button2);
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Size = new System.Drawing.Size(800, 426);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 1;
@@ -188,21 +213,53 @@
             // mapPanel
             // 
             this.mapPanel.AllowDrop = true;
+            this.mapPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mapPanel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.mapPanel.Controls.Add(this.button4);
-            this.mapPanel.Controls.Add(this.button3);
-            this.mapPanel.Controls.Add(this.button2);
-            this.mapPanel.Controls.Add(this.button1);
-            this.mapPanel.Controls.Add(this.HPButton);
-            this.mapPanel.Controls.Add(this.label2);
             this.mapPanel.Controls.Add(this.pictureBox1);
-            this.mapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapPanel.Location = new System.Drawing.Point(0, 0);
+            this.mapPanel.Location = new System.Drawing.Point(0, 31);
             this.mapPanel.Name = "mapPanel";
-            this.mapPanel.Size = new System.Drawing.Size(530, 426);
+            this.mapPanel.Size = new System.Drawing.Size(530, 395);
             this.mapPanel.TabIndex = 0;
             this.mapPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.mapPanel_DragDrop);
             this.mapPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.mapPanel_DragEnter);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(530, 395);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(382, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Связи:";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(301, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // HPButton
             // 
@@ -214,23 +271,14 @@
             this.HPButton.UseVisualStyleBackColor = true;
             this.HPButton.Click += new System.EventHandler(this.HPButton_Click);
             // 
-            // label2
+            // button2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Связи:";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(530, 426);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.button2.Location = new System.Drawing.Point(220, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -240,52 +288,6 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(221, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(302, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(384, 1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // BackButton
-            // 
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(180, 22);
-            this.BackButton.Text = "Отменить";
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
-            // 
-            // ClearButton
-            // 
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(180, 22);
-            this.ClearButton.Text = "Clear";
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // mainForm
             // 
@@ -304,13 +306,13 @@
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontNum)).EndInit();
             this.mapPanel.ResumeLayout(false);
-            this.mapPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -333,7 +335,6 @@
         private System.Windows.Forms.RichTextBox mainTextBox;
         private System.Windows.Forms.Button HPButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem BackButton;
         private System.Windows.Forms.ToolStripMenuItem ClearButton;
@@ -341,6 +342,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

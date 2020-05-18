@@ -19,11 +19,25 @@ namespace AISTT
              string text = File.ReadAllText(fileName, encoding);
              return text;
          }*/
-        public static string GetFile(string fileName)
+        public static string GetFile(string PathName, ref List<Buttonn> buttonns)
         {
+            string pathString = Path.Combine(PathName, "filename.txt");
+            string text = File.ReadAllText(pathString);
+            buttonns = DeserializeXml(buttonns,PathName);
+           
+            return text ;
+        }
+        //XmlDeSerial
+        public static List<Buttonn> DeserializeXml(List<Buttonn> Buttons, string filename)
+        {
+            XmlSerializer xmlMaker = new XmlSerializer(typeof(List<Buttonn>));
+            string pathString = Path.Combine(filename, "filename1.xml");
+            using (FileStream fs = new FileStream(pathString, FileMode.OpenOrCreate))
+            {
+                
+                 return (List<Buttonn>)xmlMaker.Deserialize(fs);
+            }
 
-            string text = File.ReadAllText(fileName);
-            return text;
         }
         //Сохранение текста
         /* public static void SaveText(string fileName, string text, Encoding encoding)
@@ -58,24 +72,15 @@ namespace AISTT
         public static void XMLSerializer(List<Buttonn> Buttons, string filename)
         {
             XmlSerializer xmlMaker = new XmlSerializer(typeof(List<Buttonn>));
-            string pathString = Path.Combine(filename, "filename1.xml");
 
+            string pathString = Path.Combine(filename, "filename1.xml");
             FileStream fs = new FileStream(pathString, FileMode.OpenOrCreate);
             {
                 xmlMaker.Serialize(fs, Buttons);
             }
 
         }
-        //XmlDeSerial
-        /*public List<Buttonn> DeserializeXml()
-        {
-           // XmlSerializer xml = new XmlSerializer(typeof);
-            using (FileStream fs = new FileStream("Users.xml", FileMode.OpenOrCreate))
-            {
-               // return (List<Buttonn>)xml.Deserialize(fs);
-            }
-            
-        }*/
+       
 
 
 

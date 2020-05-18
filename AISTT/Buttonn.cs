@@ -25,18 +25,24 @@ namespace AISTT
         public List<Pair<int,int>> connections { get; set; }
         [XmlAttribute]
         public int buttonId { get; set; }
-        
+
+        [XmlElement("Size")]
+        public Pair <int,int > size { get; set; }
+
+
+
         public Buttonn()
         {
 
         }
         
-        public Buttonn(string Name,string Text, Point position , int buttonId, List<Pair<int,int>> connections)
+        public Buttonn(string Name,string Text, Point position , int buttonId, List<Pair<int,int>> connections, Pair<int,int> size)
         {
             this.Name = Name;
             this.Text = Text;
             this.position = position;
             this.buttonId = buttonId;
+            this.size = size;
             this.connections = connections;
         }   
 
