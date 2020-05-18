@@ -26,6 +26,7 @@ namespace AISTT
         [XmlAttribute]
         public int buttonId { get; set; }
 
+
         [XmlElement("Size")]
         public Pair <int,int > size { get; set; }
 

@@ -42,10 +42,11 @@ namespace AISTT
         //Построение связзей
         private  void HPButton_Click(object sender, EventArgs e)
         {
-            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 0);
+            
+          
             if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
                 return;
-           
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 0);
             Graphics gr= pictureBox1.CreateGraphics();
             Pen p = new Pen(Color.LightGreen, 3);// цвет линии и ширина
             gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
@@ -54,10 +55,10 @@ namespace AISTT
         }
         private void IsAButton_Click(object sender, EventArgs e)
         {
-            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 1);
+           
             if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
                 return;
-
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 1);
             Graphics gr = pictureBox1.CreateGraphics();
             Pen p = new Pen(Color.Red, 3);// цвет линии и ширина
             gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
@@ -65,10 +66,10 @@ namespace AISTT
         }
         private void AKOButton_Click(object sender, EventArgs e)
         {
-            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 2);
+            
             if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
                 return;
-
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 2);
             Graphics gr = pictureBox1.CreateGraphics();
             Pen p = new Pen(Color.Blue, 3);// цвет линии и ширина
             gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
@@ -76,10 +77,10 @@ namespace AISTT
         }
         private void DescButton_Click(object sender, EventArgs e)
         {
-            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 3);
+           
             if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
                 return;
-
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 3);
             Graphics gr = pictureBox1.CreateGraphics();
             Pen p = new Pen(Color.Black, 3);// цвет линии и ширина
             gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
@@ -87,17 +88,17 @@ namespace AISTT
         }
         private void Value_Click(object sender, EventArgs e)
         {
-            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 4);
+           
             if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
                 return;
-
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 4);
             Graphics gr = pictureBox1.CreateGraphics();
             Pen p = new Pen(Color.Yellow, 3);// цвет линии и ширина
             gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
             gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
         }
 
-
+            
 
 
 
@@ -188,10 +189,10 @@ namespace AISTT
                 for (int j = 0; j < Buttonns[i].connections.Count; j++)
                 {
 
-                    conntect1[0].X = Buttonns[i].position.X-460;
-                    conntect1[0].Y = Buttonns[i].position.Y-100;
-                    conntect1[1].X = Buttonns[Buttonns[i].connections[j].First-1].position.X-460;
-                    conntect1[1].Y = Buttonns[Buttonns[i].connections[j].First-1].position.Y-100;
+                    conntect1[0].X = Buttonns[i].position.X;
+                    conntect1[0].Y = Buttonns[i].position.Y;
+                    conntect1[1].X = Buttonns[Buttonns[i].connections[j].First-1].position.X;
+                    conntect1[1].Y = Buttonns[Buttonns[i].connections[j].First-1].position.Y;
 
                  //   MessageBox.Show(Buttonns.Count.ToString());
                     Graphics gr = pictureBox1.CreateGraphics();
@@ -227,7 +228,7 @@ namespace AISTT
             // temp.Size = size;
             temp.Height = hight;
             temp.Width = width;
-            temp.Location = new Point(position.X-460, position.Y - 100);
+            temp.Location = position; 
             //убрали обводку
             temp.BackColor = Color.LightGray;
             temp.FlatAppearance.BorderSize = 0;
@@ -251,7 +252,7 @@ namespace AISTT
         //перетаскивание
         private void mapPanel_DragDrop(object sender, DragEventArgs e)
         {
-            makeNewVertex(e.Data.GetData(DataFormats.Text).ToString(),Cursor.Position, e.Data.GetData(DataFormats.Text).ToString().Length*12,20,true);
+            makeNewVertex(e.Data.GetData(DataFormats.Text).ToString(), new Point (Cursor.Position.X - splitContainer1.Panel1.Width, Cursor.Position.Y - 70), e.Data.GetData(DataFormats.Text).ToString().Length*12,20,true);
         }
         private void mapPanel_DragEnter(object sender, DragEventArgs e)
         {

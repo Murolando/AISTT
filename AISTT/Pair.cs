@@ -10,9 +10,9 @@ namespace AISTT
     public class Pair<T, U>
     {
 
-        [XmlElement("With_whom")]
+        
         public T First { get; set; }
-        [XmlElement("Value")]
+        
         public U Second { get; set; }
         public Pair()
         { 
