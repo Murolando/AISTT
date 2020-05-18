@@ -44,12 +44,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.mapPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Value = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.DescButton = new System.Windows.Forms.Button();
             this.HPButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AKOButton = new System.Windows.Forms.Button();
+            this.IsAButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -145,12 +145,12 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.mapPanel);
-            this.splitContainer1.Panel2.Controls.Add(this.button4);
+            this.splitContainer1.Panel2.Controls.Add(this.Value);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.button3);
+            this.splitContainer1.Panel2.Controls.Add(this.DescButton);
             this.splitContainer1.Panel2.Controls.Add(this.HPButton);
-            this.splitContainer1.Panel2.Controls.Add(this.button2);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.AKOButton);
+            this.splitContainer1.Panel2.Controls.Add(this.IsAButton);
             this.splitContainer1.Size = new System.Drawing.Size(800, 426);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 1;
@@ -234,14 +234,17 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
-            // button4
+            // Value
             // 
-            this.button4.Location = new System.Drawing.Point(382, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.Value.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.Value.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Value.Location = new System.Drawing.Point(382, 2);
+            this.Value.Name = "Value";
+            this.Value.Size = new System.Drawing.Size(75, 23);
+            this.Value.TabIndex = 8;
+            this.Value.Text = "величина";
+            this.Value.UseVisualStyleBackColor = false;
+            this.Value.Click += new System.EventHandler(this.Value_Click);
             // 
             // label2
             // 
@@ -252,42 +255,55 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Связи:";
             // 
-            // button3
+            // DescButton
             // 
-            this.button3.Location = new System.Drawing.Point(301, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.DescButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DescButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DescButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DescButton.Location = new System.Drawing.Point(301, 2);
+            this.DescButton.Name = "DescButton";
+            this.DescButton.Size = new System.Drawing.Size(75, 23);
+            this.DescButton.TabIndex = 7;
+            this.DescButton.Text = "определение";
+            this.DescButton.UseVisualStyleBackColor = false;
+            this.DescButton.Click += new System.EventHandler(this.DescButton_Click);
             // 
             // HPButton
             // 
+            this.HPButton.BackColor = System.Drawing.Color.Lime;
+            this.HPButton.FlatAppearance.BorderSize = 0;
+            this.HPButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HPButton.Location = new System.Drawing.Point(50, 2);
             this.HPButton.Name = "HPButton";
             this.HPButton.Size = new System.Drawing.Size(83, 23);
             this.HPButton.TabIndex = 2;
             this.HPButton.Text = "целое/часть";
-            this.HPButton.UseVisualStyleBackColor = true;
+            this.HPButton.UseVisualStyleBackColor = false;
             this.HPButton.Click += new System.EventHandler(this.HPButton_Click);
             // 
-            // button2
+            // AKOButton
             // 
-            this.button2.Location = new System.Drawing.Point(220, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.AKOButton.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.AKOButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AKOButton.Location = new System.Drawing.Point(220, 2);
+            this.AKOButton.Name = "AKOButton";
+            this.AKOButton.Size = new System.Drawing.Size(75, 23);
+            this.AKOButton.TabIndex = 6;
+            this.AKOButton.Text = "свойства";
+            this.AKOButton.UseVisualStyleBackColor = false;
+            this.AKOButton.Click += new System.EventHandler(this.AKOButton_Click);
             // 
-            // button1
+            // IsAButton
             // 
-            this.button1.Location = new System.Drawing.Point(139, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.IsAButton.BackColor = System.Drawing.Color.Red;
+            this.IsAButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IsAButton.Location = new System.Drawing.Point(139, 2);
+            this.IsAButton.Name = "IsAButton";
+            this.IsAButton.Size = new System.Drawing.Size(75, 23);
+            this.IsAButton.TabIndex = 5;
+            this.IsAButton.Text = "относится к";
+            this.IsAButton.UseVisualStyleBackColor = false;
+            this.IsAButton.Click += new System.EventHandler(this.IsAButton_Click);
             // 
             // mainForm
             // 
@@ -338,10 +354,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem BackButton;
         private System.Windows.Forms.ToolStripMenuItem ClearButton;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Value;
+        private System.Windows.Forms.Button DescButton;
+        private System.Windows.Forms.Button AKOButton;
+        private System.Windows.Forms.Button IsAButton;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

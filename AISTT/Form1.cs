@@ -36,7 +36,7 @@ namespace AISTT
 
         //выбор вершин для соединения
         Point[] conntect = new Point[2];
-      
+        Color[] colors = new Color[5] {Color.LightGreen, Color.Red , Color.Blue , Color.Black, Color.Yellow };
         //id вершин
         Pair<int, int> idForConnection=new Pair<int, int>(0,0);
         //Построение связзей
@@ -47,11 +47,61 @@ namespace AISTT
                 return;
            
             Graphics gr= pictureBox1.CreateGraphics();
-            Pen p = new Pen(Color.Black, 3);// цвет линии и ширина
+            Pen p = new Pen(Color.LightGreen, 3);// цвет линии и ширина
             gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
             gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
         
         }
+        private void IsAButton_Click(object sender, EventArgs e)
+        {
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 1);
+            if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
+                return;
+
+            Graphics gr = pictureBox1.CreateGraphics();
+            Pen p = new Pen(Color.Red, 3);// цвет линии и ширина
+            gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
+            gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
+        }
+        private void AKOButton_Click(object sender, EventArgs e)
+        {
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 2);
+            if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
+                return;
+
+            Graphics gr = pictureBox1.CreateGraphics();
+            Pen p = new Pen(Color.Blue, 3);// цвет линии и ширина
+            gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
+            gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
+        }
+        private void DescButton_Click(object sender, EventArgs e)
+        {
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 3);
+            if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
+                return;
+
+            Graphics gr = pictureBox1.CreateGraphics();
+            Pen p = new Pen(Color.Black, 3);// цвет линии и ширина
+            gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
+            gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
+        }
+        private void Value_Click(object sender, EventArgs e)
+        {
+            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, 4);
+            if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
+                return;
+
+            Graphics gr = pictureBox1.CreateGraphics();
+            Pen p = new Pen(Color.Yellow, 3);// цвет линии и ширина
+            gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
+            gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
+        }
+
+
+
+
+
+
         // Создание связей
 
         public static void MakeConntection(List<Buttonn> Buttons, int idIn, int idOut, int valueOfConnection)
@@ -145,7 +195,7 @@ namespace AISTT
 
                  //   MessageBox.Show(Buttonns.Count.ToString());
                     Graphics gr = pictureBox1.CreateGraphics();
-                    Pen p = new Pen(Color.Black, 3);// цвет линии и ширина
+                    Pen p = new Pen(colors[Buttonns[i].connections[j].Second], 3);// цвет линии и ширина
                     gr.DrawLine(p, conntect1[0], conntect1[1]);// рисуем линию
                     gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
                 }
@@ -327,10 +377,11 @@ namespace AISTT
        {
 
        }
+
+
+
         #endregion
 
-
-
-
+      
     }
 }
