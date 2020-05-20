@@ -75,8 +75,9 @@ namespace AISTT
             XmlSerializer xmlMaker = new XmlSerializer(typeof(List<Buttonn>));
 
             string pathString = Path.Combine(filename, "filename1.xml");
-            FileStream fs = new FileStream(pathString, FileMode.OpenOrCreate);
+            using (FileStream fs = new FileStream(pathString, FileMode.OpenOrCreate)) 
             {
+               
                 xmlMaker.Serialize(fs, Buttons);
             }
 
