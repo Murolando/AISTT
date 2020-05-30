@@ -27,17 +27,28 @@ namespace AISTT
            
             return text ;
         }
+        public static string GetFile(string PathName)
+        {
+            
+            string text = File.ReadAllText(PathName);
+            return text;
+        }
         //XmlDeSerial
         public static List<Buttonn> DeserializeXml(List<Buttonn> Buttons, string filename)
         {
             XmlSerializer xmlMaker = new XmlSerializer(typeof(List<Buttonn>));
             string pathString = Path.Combine(filename, "filename1.xml");
-            using (FileStream fs = new FileStream(pathString, FileMode.OpenOrCreate))
+            try
             {
-                
-                 return (List<Buttonn>)xmlMaker.Deserialize(fs);
-            }
+                using (FileStream fs = new FileStream(pathString, FileMode.OpenOrCreate))
+                {
 
+                    return (List<Buttonn>)xmlMaker.Deserialize(fs);
+                }
+            }
+            catch {
+                return new List<Buttonn>();
+                 }
         }
         //Сохранение текста
         /* public static void SaveText(string fileName, string text, Encoding encoding)

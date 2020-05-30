@@ -169,6 +169,7 @@ namespace AISTT
             {
 
                 MessageBox.Show("Вы можете выбрать только две вершины");
+
                 return;
             }
 
@@ -312,6 +313,12 @@ namespace AISTT
             pictureBox1.Dispose();
             Buttonns.Clear();
             mapPanel.Controls.Clear();
+            conntect[0].X = 0;
+            conntect[0].Y = 0;
+            conntect[1].X = 0;
+            conntect[1].Y = 0;
+            vertex = 0;
+            pictureBox1.Dispose();
         }
         //открыть файл
         private void openFileM_Click(object sender, EventArgs e)
@@ -336,6 +343,22 @@ namespace AISTT
                 MakeConnectionsAfterOpen();
             }
         }
+        private void ExampleBut_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = @"C:\Users\gabis\source\repos\AISTT\AISTT\bin\Debug\exmpl";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                mainTextBox.Text = FileManager.GetFile(dlg.FileName);
+                mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);
+                id = Buttonns.Count;
+                vertex = 0;
+                conntect[0].X = 0;
+                conntect[0].Y = 0;
+                conntect[1].X = 0;
+                conntect[1].Y = 0;
+            }
+        }
         //сохранение файла
         private void saveFileM_Click(object sender, EventArgs e)
         {
@@ -350,6 +373,7 @@ namespace AISTT
              
             }
         }
+    
         private void saveAsFilem_Click(object sender, EventArgs e)
         {
             FileManager.SaveFileAs(mainTextBox.Text, Buttonns);
@@ -378,8 +402,9 @@ namespace AISTT
 
 
 
+
         #endregion
 
-      
+       
     }
 }
