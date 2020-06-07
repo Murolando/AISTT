@@ -17,29 +17,22 @@ namespace AISTT
         public string Name { get; set; }
         [XmlAttribute]
         public string Text { get; set; }
-
-       // [XmlAttribute]
         public Point position { get; set; }
-
         [XmlElement("Connections")]
         public List<Pair<int,int>> connections { get; set; }
         [XmlAttribute]
         public int buttonId { get; set; }
-
-
         [XmlElement("Size")]
         public Pair <int,int > size { get; set; }
-
 
 
         public Buttonn()
         {
 
-        }
-        
+        }      
         public Buttonn(string Name,string Text, Point position , int buttonId, List<Pair<int,int>> connections, Pair<int,int> size)
         {
-            this.Name = Name;
+            
             this.Text = Text;
             this.position = position;
             this.buttonId = buttonId;

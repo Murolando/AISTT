@@ -37,6 +37,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.BackButton = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExampleBut = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.mainTextBox = new System.Windows.Forms.RichTextBox();
@@ -50,7 +51,6 @@
             this.HPButton = new System.Windows.Forms.Button();
             this.AKOButton = new System.Windows.Forms.Button();
             this.IsAButton = new System.Windows.Forms.Button();
-            this.ExampleBut = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -90,49 +90,56 @@
             // newFileM
             // 
             this.newFileM.Name = "newFileM";
-            this.newFileM.Size = new System.Drawing.Size(180, 22);
+            this.newFileM.Size = new System.Drawing.Size(128, 22);
             this.newFileM.Text = "New";
             this.newFileM.Click += new System.EventHandler(this.newFileM_Click);
             // 
             // openFileM
             // 
             this.openFileM.Name = "openFileM";
-            this.openFileM.Size = new System.Drawing.Size(180, 22);
+            this.openFileM.Size = new System.Drawing.Size(128, 22);
             this.openFileM.Text = "Open";
             this.openFileM.Click += new System.EventHandler(this.openFileM_Click);
             // 
             // saveFileM
             // 
             this.saveFileM.Name = "saveFileM";
-            this.saveFileM.Size = new System.Drawing.Size(180, 22);
+            this.saveFileM.Size = new System.Drawing.Size(128, 22);
             this.saveFileM.Text = "Save";
             this.saveFileM.Click += new System.EventHandler(this.saveFileM_Click);
             // 
             // saveAsFilem
             // 
             this.saveAsFilem.Name = "saveAsFilem";
-            this.saveAsFilem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsFilem.Size = new System.Drawing.Size(128, 22);
             this.saveAsFilem.Text = "Save as";
             this.saveAsFilem.Click += new System.EventHandler(this.saveAsFilem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(125, 6);
             // 
             // BackButton
             // 
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(180, 22);
+            this.BackButton.Size = new System.Drawing.Size(128, 22);
             this.BackButton.Text = "Отменить";
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // ClearButton
             // 
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(180, 22);
+            this.ClearButton.Size = new System.Drawing.Size(128, 22);
             this.ClearButton.Text = "Clear";
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // ExampleBut
+            // 
+            this.ExampleBut.Name = "ExampleBut";
+            this.ExampleBut.Size = new System.Drawing.Size(128, 22);
+            this.ExampleBut.Text = "Examples";
+            this.ExampleBut.Click += new System.EventHandler(this.ExampleBut_Click);
             // 
             // splitContainer1
             // 
@@ -218,6 +225,7 @@
             this.mapPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mapPanel.AutoScroll = true;
             this.mapPanel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.mapPanel.Controls.Add(this.pictureBox1);
             this.mapPanel.Location = new System.Drawing.Point(0, 31);
@@ -306,13 +314,6 @@
             this.IsAButton.Text = "относится к";
             this.IsAButton.UseVisualStyleBackColor = false;
             this.IsAButton.Click += new System.EventHandler(this.IsAButton_Click);
-            // 
-            // ExampleBut
-            // 
-            this.ExampleBut.Name = "ExampleBut";
-            this.ExampleBut.Size = new System.Drawing.Size(180, 22);
-            this.ExampleBut.Text = "Examples";
-            this.ExampleBut.Click += new System.EventHandler(this.ExampleBut_Click);
             // 
             // mainForm
             // 

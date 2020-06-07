@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace AISTT
 {
-    public class FileManager
+    public static class FileManager
     {
         //Открытие текста
         /* public static string GetText(string fileName, Encoding encoding)

@@ -18,7 +18,7 @@ namespace AISTT
 {
     public partial class mainForm : Form
     {
-        static string filePath { get; set; }
+       
 
         List<Buttonn> Buttonns = new List<Buttonn>();
         public mainForm()
@@ -29,8 +29,13 @@ namespace AISTT
         {
 
         }
+        //Изменение размера шрифта
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);
+        }
 
-        #region Работа с вершинами и связими этих вершин
+        #region vertexes and connections
 
 
 
@@ -210,7 +215,7 @@ namespace AISTT
 
         #endregion
 
-        #region создание вершин 
+        #region vertex creation
 
 
 
@@ -245,7 +250,7 @@ namespace AISTT
         }
 
 
-        #endregion 
+        #endregion  
 
         #region DragAndDrop
 
@@ -263,26 +268,23 @@ namespace AISTT
 
         #endregion
 
-        #region сохранение и открытие файлов 
+        #region save and open files
+        static string filePath { get; set; }
 
         //Закрытие приложения
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (mainTextBox.Text != "")
             {
-
                 if (MessageBox.Show("Вы хотите сохранить изменения?", "AIST", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (filePath == null)
                     {
                         FileManager.SaveFileAs(mainTextBox.Text,Buttonns);
-                        
-
                     }
                     else
                     {
-                        FileManager.SaveFile(filePath, mainTextBox.Text, Buttonns);
-                       
+                        FileManager.SaveFile(filePath, mainTextBox.Text, Buttonns);    
                     }
                 }
             }
@@ -298,13 +300,10 @@ namespace AISTT
                     if (filePath == null)
                     {
                         FileManager.SaveFileAs(mainTextBox.Text, Buttonns);
-                     
-
                     }
                     else
                     {
                         FileManager.SaveFile(filePath, mainTextBox.Text, Buttonns);
-                        
                     }
                 }
             }
@@ -365,27 +364,20 @@ namespace AISTT
             if(filePath!=null)
             {
                 FileManager.SaveFile(filePath,mainTextBox.Text, Buttonns);
-               
             }
             else
             {
                 FileManager.SaveFileAs(mainTextBox.Text, Buttonns);
-             
             }
         }
     
         private void saveAsFilem_Click(object sender, EventArgs e)
         {
             FileManager.SaveFileAs(mainTextBox.Text, Buttonns);
-           
         }
         #endregion
 
-        //Изменение размера шрифта
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);
-        }
+      
 
         #region доп функции,которых пока нет
         //отменить последнее действие
