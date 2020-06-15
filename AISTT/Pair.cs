@@ -22,7 +22,5 @@ namespace AISTT
             this.First = first;
             this.Second = second;
         }
-
- 
-    };
+    }
 }

@@ -254,12 +254,12 @@
             this.Value.TabIndex = 8;
             this.Value.Text = "величина";
             this.Value.UseVisualStyleBackColor = false;
-            this.Value.Click += new System.EventHandler(this.Value_Click);
+            this.Value.Click += new System.EventHandler(this.Connect_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 7);
+            this.label2.Location = new System.Drawing.Point(3, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 3;
@@ -276,7 +276,7 @@
             this.DescButton.TabIndex = 7;
             this.DescButton.Text = "определение";
             this.DescButton.UseVisualStyleBackColor = false;
-            this.DescButton.Click += new System.EventHandler(this.DescButton_Click);
+            this.DescButton.Click += new System.EventHandler(this.Connect_Click);
             // 
             // HPButton
             // 
@@ -289,7 +289,7 @@
             this.HPButton.TabIndex = 2;
             this.HPButton.Text = "целое/часть";
             this.HPButton.UseVisualStyleBackColor = false;
-            this.HPButton.Click += new System.EventHandler(this.HPButton_Click);
+            this.HPButton.Click += new System.EventHandler(this.Connect_Click);
             // 
             // AKOButton
             // 
@@ -301,7 +301,7 @@
             this.AKOButton.TabIndex = 6;
             this.AKOButton.Text = "свойства";
             this.AKOButton.UseVisualStyleBackColor = false;
-            this.AKOButton.Click += new System.EventHandler(this.AKOButton_Click);
+            this.AKOButton.Click += new System.EventHandler(this.Connect_Click);
             // 
             // IsAButton
             // 
@@ -313,7 +313,7 @@
             this.IsAButton.TabIndex = 5;
             this.IsAButton.Text = "относится к";
             this.IsAButton.UseVisualStyleBackColor = false;
-            this.IsAButton.Click += new System.EventHandler(this.IsAButton_Click);
+            this.IsAButton.Click += new System.EventHandler(this.Connect_Click);
             // 
             // mainForm
             // 
