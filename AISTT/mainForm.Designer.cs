@@ -225,7 +225,6 @@
             this.mapPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mapPanel.AutoScroll = true;
             this.mapPanel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.mapPanel.Controls.Add(this.pictureBox1);
             this.mapPanel.Location = new System.Drawing.Point(0, 31);

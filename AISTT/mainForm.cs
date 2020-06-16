@@ -20,7 +20,7 @@ namespace AISTT
     {
 
 
-        List<Buttonn> Buttonns = new List<Buttonn>();
+       public static List<Buttonn> Buttonns = new List<Buttonn>();
         public mainForm()
         {
             InitializeComponent();
@@ -37,11 +37,6 @@ namespace AISTT
 
         #region vertexes and connections
 
-
-
-
-
-
         /// <summary>
         /// Рисует связь
         /// </summary>
@@ -49,19 +44,18 @@ namespace AISTT
         /// <param name="colors">Хранит весь список цветов возможных связей </param>
         /// <param name="idForConnection">id связываемых вершин</param> 
         /// <param name="conntect">выбор вершин для соединения</param>
-        
+        /// <param name="connections">Список всех ребер</param>
+        public  static List<Connections<int, int, int>> connections = new List<Connections<int, int, int>>();
         Point[] conntect = new Point[2];
         Pair<int, int> idForConnection = new Pair<int, int>(0, 0);
         Color[] colors = new Color[5] { Color.LightGreen, Color.Red, Color.Blue, Color.Black, Color.Yellow };
-        private void drawer(int colorId)
+        private void drawer(int colorId,Point conntect1, Point conntect2 )
         {
-            if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
-                return;
-            MakeConntection(Buttonns, idForConnection.First, idForConnection.Second, colorId);
+           
             Graphics gr = pictureBox1.CreateGraphics();
             Pen p = new Pen(colors[colorId], 3);// цвет линии и ширина
-            gr.DrawLine(p, conntect[0], conntect[1]);// рисуем линию
-            gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
+            gr.DrawLine(p, conntect1, conntect2);// рисуем линию
+            
         }
 
 
@@ -74,34 +68,39 @@ namespace AISTT
         {
             Button bossYaUstal = sender as Button;
             string[] buttonsNames = new string[5] { "HPButton" , "IsAButton", "AKOButton", "DescButton", "Value" };
-            for (int i = 0; i < 5; i++)
+
+            if (conntect[0].X == 0 && conntect[0].Y == 0 || conntect[1].X == 0 && conntect[1].Y == 0)
+                return;
+            
+            for (int colorId = 0; colorId < 5; colorId++)
             {
-                if(bossYaUstal.Name == buttonsNames[i])
+                if(bossYaUstal.Name == buttonsNames[colorId])
                 {
-                    drawer(i);
+                 
+                    connections.Add(new Connections<int, int, int>(idForConnection.First, idForConnection.Second, colorId));
+                    drawer(colorId, conntect[0], conntect[1]);
                 }
             }
         }
+
         /// <summary>
-        /// Создание связей
+        /// Отрисовка связей после открытия файла
         /// </summary>
-        /// <param name="Buttons"> список вершины </param>
-        /// <param name="idIn"> айди первой вершины соединения</param>
-        /// <param name="idOut">айди второй </param>
-        /// <param name="valueOfConnection">типо соединения</param>
-        public static void MakeConntection(List<Buttonn> Buttons, int idIn, int idOut, int valueOfConnection)
+        private void MakeConnectionsAfterOpen()
         {
-            for (int i = 0; i < Buttons.Count; i++)
+            Point[] conntect1 = new Point[2];
+            for (int i = 0; i < Buttonns.Count; i++)
             {
-                if (Buttons[i].buttonId == idOut)
-                    Buttons[i].connections.Add(new Pair<int, int>(idIn, valueOfConnection));
-                if (Buttons[i].buttonId == idIn)
-                    Buttons[i].connections.Add(new Pair<int, int>(idOut, valueOfConnection));
+                makeNewVertex(Buttonns[i].Text, Buttonns[i].position, false);
+              
             }
+            for (int i = 0; i < connections.Count; i++)
+            {
+             
+                drawer(connections[i].Third, Buttonns[connections[i].First].position, Buttonns[connections[i].Second].position);
+            }
+            MessageBox.Show(connections.Count.ToString());
         }
-
-
-
         /// <summary>
         /// считывание нажатий на кнопки
         /// </summary>
@@ -153,40 +152,12 @@ namespace AISTT
                 return;
             }
         }
-        //Отрисовка связей после открытия файла
-        private void MakeConnectionsAfterOpen()
-        {
-            Point[] conntect1 = new Point[2];
-            for (int i = 0; i < Buttonns.Count; i++)
-            {
-                makeNewVertex(Buttonns[i].Text, Buttonns[i].position,  false);
-            }
-            for (int i = 0; i < Buttonns.Count; i++)
-            {
-                for (int j = 0; j < Buttonns[i].connections.Count; j++)
-                {
-                    conntect1[0].X = Buttonns[i].position.X; 
-                    conntect1[0].Y = Buttonns[i].position.Y;
-                    conntect1[1].X = Buttonns[Buttonns[i].connections[j].First - 1].position.X;
-                    conntect1[1].Y = Buttonns[Buttonns[i].connections[j].First - 1].position.Y;
-                    //   MessageBox.Show(Buttonns.Count.ToString());
-                    Graphics gr = pictureBox1.CreateGraphics();
-                    Pen p = new Pen(colors[Buttonns[i].connections[j].Second], 3);// цвет линии и ширина
-                    gr.DrawLine(p, conntect1[0], conntect1[1]);// рисуем линию
-                    gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
-                }
-            }
-        }
-
-
-
-
-
+   
         #endregion
 
         #region vertex creation
         int id = 0;
-        List<Button> vertexes = new List<Button>();
+        public static List<Button> vertexes = new List<Button>();
         /// <summary>
         /// Создание вершин сети, после перетаскивания текста из mainTextBox в редактор карт
         /// </summary>
@@ -208,13 +179,14 @@ namespace AISTT
             //int weight = Convert.ToInt32(temp.Font.Size * e.Length + temp.Font.Size);
             temp.Text = e;
             // temp.Size = size;
-            temp.AutoSize = true;
+            temp.AutoSize = false;
             temp.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             temp.Location = position;
             //убрали обводку
             temp.BackColor = Color.LightGray;
             temp.FlatAppearance.BorderSize = 0;
             temp.FlatStyle = FlatStyle.Flat;
+            new ToolTip().SetToolTip(temp, temp.Text);
             //Добавляем элемент на форму
             temp.Click += new EventHandler(FieldClick);
             mapPanel.Controls.Add(temp);    
@@ -222,7 +194,7 @@ namespace AISTT
             vertexes.Add(temp);
             //в список его для дальнейшей сериализации
             if (need)
-                Buttonns.Add(new Buttonn(temp.Name, temp.Text, position, id, new List<Pair<int, int>>(), new Pair<int, int>(temp.Width, temp.Height)));
+                Buttonns.Add(new Buttonn(temp.Text, position, id, new Pair<int, int>(temp.Width, temp.Height)));
         }
 
 
@@ -262,11 +234,11 @@ namespace AISTT
                 {
                     if (filePath == null)
                     {
-                        FileManager.SaveFileAs(mainTextBox.Text, Buttonns);
+                        FileManager.SaveFileAs(mainTextBox.Text);
                     }
                     else
                     {
-                        FileManager.SaveFile(filePath, mainTextBox.Text, Buttonns);
+                        FileManager.SaveFile(filePath, mainTextBox.Text);
                     }
                 }
             }
@@ -285,11 +257,11 @@ namespace AISTT
                 {
                     if (filePath == null)
                     {
-                        FileManager.SaveFileAs(mainTextBox.Text, Buttonns);
+                        FileManager.SaveFileAs(mainTextBox.Text);
                     }
                     else
                     {
-                        FileManager.SaveFile(filePath, mainTextBox.Text, Buttonns);
+                        FileManager.SaveFile(filePath, mainTextBox.Text);
                     }
                 }
             }
@@ -309,8 +281,8 @@ namespace AISTT
             if (dlg.ShowDialog() == DialogResult.OK)
             {
 
-                Clearer();
-                mainTextBox.Text = FileManager.GetFile(dlg.SelectedPath, ref Buttonns);
+               Clearer();
+                mainTextBox.Text = FileManager.GetFile(dlg.SelectedPath);
                 mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);   
                 filePath = dlg.SelectedPath;
                 MakeConnectionsAfterOpen();
@@ -342,11 +314,11 @@ namespace AISTT
         {
             if(filePath!=null)
             {
-                FileManager.SaveFile(filePath,mainTextBox.Text, Buttonns);
+                FileManager.SaveFile(filePath,mainTextBox.Text);
             }
             else
             {
-                FileManager.SaveFileAs(mainTextBox.Text, Buttonns);
+                FileManager.SaveFileAs(mainTextBox.Text);
             }
         }
         /// <summary>
@@ -356,7 +328,7 @@ namespace AISTT
         /// <param name="e">нажатие</param>
         private void saveAsFilem_Click(object sender, EventArgs e)
         {
-            FileManager.SaveFileAs(mainTextBox.Text, Buttonns);
+            FileManager.SaveFileAs(mainTextBox.Text);
         }
        
 
@@ -365,7 +337,6 @@ namespace AISTT
         /// </summary>
         void Clearer()
         {
-
             filePath = null;
             mainTextBox.Clear();
             conntect[0].X = 0;
@@ -374,11 +345,12 @@ namespace AISTT
             conntect[1].Y = 0;
             vertex = 0;
             pictureBox1.Image = null;
-            for (int i = 0; i < vertexes.Count; i++)
-            {
-                mapPanel.Controls.Remove(vertexes[i]);
-            }
+           for (int i = 0; i < vertexes.Count; i++)
+           {
+                vertexes[i].Dispose();
+           }
             vertexes.Clear();
+            connections.Clear();
         }
 
         #endregion

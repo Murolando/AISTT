@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buttonn.cs" />
+    <Compile Include="Connections.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>

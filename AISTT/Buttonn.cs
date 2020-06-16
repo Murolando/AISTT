@@ -12,32 +12,38 @@ namespace AISTT
 {
     public class Buttonn
     {
-
-        [XmlAttribute]
-        public string Name { get; set; }
         [XmlAttribute]
         public string Text { get; set; }
         public Point position { get; set; }
-        [XmlElement("Connections")]
-        public List<Pair<int,int>> connections { get; set; }
+      
         [XmlAttribute]
         public int buttonId { get; set; }
         [XmlElement("Size")]
         public Pair <int,int > size { get; set; }
 
-
+        /// <summary>
+        /// Конструктор по умолчанию для сериализации
+        /// </summary>
         public Buttonn()
         {
 
         }      
-        public Buttonn(string Name,string Text, Point position , int buttonId, List<Pair<int,int>> connections, Pair<int,int> size)
+        /// <summary>
+        /// контруктор,хранящий в себе все нужные нам данные о вершинах
+        /// </summary>
+        /// <param name="Text"></param>
+        /// <param name="position"></param>
+        /// <param name="buttonId"></param>
+        /// <param name="connections"></param>
+        /// <param name="size"></param>
+        public Buttonn(string Text, Point position , int buttonId, Pair<int,int> size)
         {
             
             this.Text = Text;
             this.position = position;
             this.buttonId = buttonId;
             this.size = size;
-            this.connections = connections;
+   
         }   
 
     }
