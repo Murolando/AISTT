@@ -57,7 +57,6 @@ namespace AISTT
             Graphics gr = pictureBox1.CreateGraphics();
             Pen p = new Pen(colors[colorId], 3);// цвет линии и ширина
             gr.DrawLine(p, conntect1, conntect2);// рисуем линию
-            
         }
         /// <summary>
         /// Отвечает за тип связи между выбранными вершинам
@@ -95,8 +94,6 @@ namespace AISTT
               
             }
             ReDrower();
-
-           
         }
         /// <summary>
         /// Отрисовывает все ребра заново
@@ -369,13 +366,15 @@ namespace AISTT
             conntect[1].X = 0;
             conntect[1].Y = 0;
             vertex = 0;
-            pictureBox1.Image = null;
+            //pictureBox1.;
+
            for (int i = 0; i < vertexes.Count; i++)
            {
                 vertexes[i].Dispose();
            }
             vertexes.Clear();
             connections.Clear();
+
         }
 
         #endregion
