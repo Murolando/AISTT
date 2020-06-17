@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 namespace AISTT
 {
+    [XmlRoot(ElementName = "YourPreferableNameHere")]
     public  class Connections<T,U,K>
     {
 
@@ -20,8 +21,6 @@ namespace AISTT
         [XmlAttribute ("ConId")]
 
         public K Third { get; set; }
-
-       
 
         public Connections()
         {

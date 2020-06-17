@@ -231,6 +231,7 @@
             this.mapPanel.Name = "mapPanel";
             this.mapPanel.Size = new System.Drawing.Size(530, 395);
             this.mapPanel.TabIndex = 0;
+            this.mapPanel.SizeChanged += new System.EventHandler(this.mapPanel_SizeChanged);
             this.mapPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.mapPanel_DragDrop);
             this.mapPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.mapPanel_DragEnter);
             // 

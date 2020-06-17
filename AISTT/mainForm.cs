@@ -52,13 +52,12 @@ namespace AISTT
         private void drawer(int colorId,Point conntect1, Point conntect2 )
         {
            
+            StackAdd(2); //Добавление в стэк ласт действия 
             Graphics gr = pictureBox1.CreateGraphics();
             Pen p = new Pen(colors[colorId], 3);// цвет линии и ширина
             gr.DrawLine(p, conntect1, conntect2);// рисуем линию
             
         }
-
-
         /// <summary>
         /// Отвечает за тип связи между выбранными вершинам
         /// </summary>
@@ -94,12 +93,30 @@ namespace AISTT
                 makeNewVertex(Buttonns[i].Text, Buttonns[i].position, false);
               
             }
+            ReDrower();
+
+           
+        }
+        /// <summary>
+        /// Отрисовывает все ребра заново
+        /// </summary>
+        private void ReDrower()
+        {
+
             for (int i = 0; i < connections.Count; i++)
             {
-             
-                drawer(connections[i].Third, Buttonns[connections[i].First].position, Buttonns[connections[i].Second].position);
+
+                drawer(connections[i].Third, Buttonns[connections[i].First - 1].position, Buttonns[connections[i].Second - 1].position);
             }
-            MessageBox.Show(connections.Count.ToString());
+        }
+        /// <summary>
+        /// Отрисовывает все линии обратно,при изменениее размера панели
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mapPanel_SizeChanged(object sender, EventArgs e)
+        {
+            ReDrower();
         }
         /// <summary>
         /// считывание нажатий на кнопки
@@ -192,9 +209,11 @@ namespace AISTT
             mapPanel.Controls.Add(temp);    
             temp.BringToFront();
             vertexes.Add(temp);
+            StackAdd(1);//Добавление в список последних действий
             //в список его для дальнейшей сериализации
             if (need)
                 Buttonns.Add(new Buttonn(temp.Text, position, id, new Pair<int, int>(temp.Width, temp.Height)));
+            
         }
 
 
@@ -280,7 +299,6 @@ namespace AISTT
            FolderBrowserDialog dlg = new FolderBrowserDialog();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-
                Clearer();
                 mainTextBox.Text = FileManager.GetFile(dlg.SelectedPath);
                 mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);   
@@ -300,7 +318,7 @@ namespace AISTT
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Clearer();
-                mainTextBox.Text = FileManager.GetFile(dlg.FileName);
+                mainTextBox.Text = FileManager.GetFileFromEx(dlg.FileName);
                 mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);
                 
             }
@@ -355,24 +373,73 @@ namespace AISTT
 
         #endregion
 
-        #region доп функции,которых пока нет
-        //отменить последнее действие
+        #region Последние действия
+
+        /// <summary>
+        /// Добавление в стэк действий
+        /// </summary>
+        /// <param name="typeOfMove">тип действия (добавление ребра или вершины)</param>
+        /// <param name="del">Стэк последний действий</param>
+        Stack<int> del = new Stack<int>(5);
+        private void StackAdd(int typeOfMove)
+        {
+            try 
+            {
+                del.Push(typeOfMove);
+            }
+            catch
+            {
+                del.Clear();
+            }
+        }
+
+
+        
+       /// <summary>
+       /// Отвечает за отмену последнего действия
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private void BackButton_Click(object sender, EventArgs e)
-       {
+        {
+            try
+            {
+                if (del.Peek() == 1)//отмена вершины
+                {
 
-       }
+                    vertexes.Last().Dispose();
+                    vertexes.Remove(vertexes.Last());
+                    del.Pop();
+                    return;
+                }
+                if (del.Peek() == 2)//отмена связи
+                {
+                    pictureBox1.Image = null;
+                    connections.Remove(connections.Last());
+                    ReDrower();
+                    del.Pop();
+                    return;
+                }
+            }
+            catch
+            {
 
-       //Удаление вершин 
+
+            }
+          
+        }
+
+       /// <summary>
+       /// Удаление всех совершенных действий
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
        private void ClearButton_Click(object sender, EventArgs e)
        {
-
+            Clearer();
        }
-
-
-
-
         #endregion
 
-       
+        
     }
 }

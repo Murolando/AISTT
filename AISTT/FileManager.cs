@@ -28,6 +28,11 @@ namespace AISTT
             DeserializeXml(PathName);
             return text ;
         }
+        public static string GetFileFromEx(string fileName)
+        {
+            string text = File.ReadAllText(fileName);
+            return text;
+        }
         //Сохранение текста
         /* public static void SaveText(string fileName, string text, Encoding encoding)
          {
@@ -108,17 +113,20 @@ namespace AISTT
                     mainForm.Buttonns = (List<Buttonn>)xmlMaker.Deserialize(fs);
 
                 }
+
                 using (FileStream ms = new FileStream(pathStringCon, FileMode.OpenOrCreate))
                 {
+                    // mainForm.connections
+                    mainForm.connections = (List<Connections<int, int, int>>)xmlMakerCon.Deserialize(ms);
 
-                    mainForm.connections = (List<Connections<int, int, int>>)xmlMaker.Deserialize(ms);
                 }
             }
+
             catch
             {
                 
             }
-           
+            
         }
 
 
