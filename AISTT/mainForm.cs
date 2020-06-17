@@ -318,6 +318,18 @@ namespace AISTT
                 
             }
         }
+        private void openTextFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            //dlg.InitialDirectory = Directory.GetCurrentDirectory() + @"\exmpl";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Clearer();
+                mainTextBox.Text = FileManager.GetFileFromEx(dlg.FileName);
+                mainTextBox.Font = new Font(mainTextBox.Font.ToString(), (float)fontNum.Value, FontStyle.Regular);
+
+            }
+        }
         /// <summary>
         /// Отвечает за сохранение в относительную папку(если конечно она есть)
         /// </summary>
@@ -433,8 +445,9 @@ namespace AISTT
        {
             Clearer();
        }
+
         #endregion
 
-        
+       
     }
 }
