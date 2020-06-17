@@ -21,13 +21,14 @@ namespace AISTT
 
 
         public static List<Buttonn> Buttonns = new List<Buttonn>();
+       
         public mainForm()
         {
             InitializeComponent();
         }
         private void mainForm_Load(object sender, EventArgs e)
         {
-
+            
         }
         //Изменение размера шрифта
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace AISTT
         int[] idForConnection = new int[2] {0,0};
 
         Color[] colors = new Color[5] { Color.LightGreen, Color.Red, Color.Blue, Color.Black, Color.Yellow };
-        private void drawer(int colorId,Point conntect1, Point conntect2 )
+        public void drawer(int colorId,Point conntect1, Point conntect2 )
         {
            
             StackAdd(2); //Добавление в стэк ласт действия 
@@ -100,12 +101,20 @@ namespace AISTT
         /// </summary>
         private void ReDrower()
         {
-
-            for (int i = 0; i < connections.Count; i++)
+            try
             {
+                for (int i = 0; i < connections.Count; i++)
+                {
 
-                drawer(connections[i].Third, Buttonns[connections[i].First - 1].position, Buttonns[connections[i].Second - 1].position);
+                    drawer(connections[i].Third, Buttonns[connections[i].First - 1].position, Buttonns[connections[i].Second - 1].position);
+
+                }
             }
+            catch
+            {
+               
+            }
+            
         }
         /// <summary>
         /// Отрисовывает все линии обратно,при изменениее размера панели
@@ -367,7 +376,12 @@ namespace AISTT
             conntect[1].Y = 0;
             vertex = 0;
             //pictureBox1.;
-
+            /*if (connections.Count!=0)
+            {
+                pictureBox1.Image.Dispose();
+            }*/
+            pictureBox1.Image = null;
+            pictureBox1.Update();
            for (int i = 0; i < vertexes.Count; i++)
            {
                 vertexes[i].Dispose();
@@ -379,7 +393,7 @@ namespace AISTT
 
         #endregion
 
-        #region Последние действия
+        #region about Last moves
 
         /// <summary>
         /// Добавление в стэк действий
@@ -396,6 +410,7 @@ namespace AISTT
             catch
             {
                 del.Clear();
+                del.Push(typeOfMove);
             }
         }
 
