@@ -18,9 +18,7 @@ namespace AISTT
       
         [XmlAttribute]
         public int buttonId { get; set; }
-        [XmlElement("Size")]
-        public Pair <int,int > size { get; set; }
-
+      
         /// <summary>
         /// Конструктор по умолчанию для сериализации
         /// </summary>
@@ -35,14 +33,13 @@ namespace AISTT
         /// <param name="position"></param>
         /// <param name="buttonId"></param>
         /// <param name="connections"></param>
-        /// <param name="size"></param>
-        public Buttonn(string Text, Point position , int buttonId, Pair<int,int> size)
+        public Buttonn(string Text, Point position , int buttonId)
         {
             
             this.Text = Text;
             this.position = position;
             this.buttonId = buttonId;
-            this.size = size;
+          
    
         }   
 

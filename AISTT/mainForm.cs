@@ -20,7 +20,7 @@ namespace AISTT
     {
 
 
-       public static List<Buttonn> Buttonns = new List<Buttonn>();
+        public static List<Buttonn> Buttonns = new List<Buttonn>();
         public mainForm()
         {
             InitializeComponent();
@@ -45,9 +45,10 @@ namespace AISTT
         /// <param name="idForConnection">id связываемых вершин</param> 
         /// <param name="conntect">выбор вершин для соединения</param>
         /// <param name="connections">Список всех ребер</param>
-        public  static List<Connections<int, int, int>> connections = new List<Connections<int, int, int>>();
+        public static List<Connections<int, int, int>> connections = new List<Connections<int, int, int>>();
         Point[] conntect = new Point[2];
-        Pair<int, int> idForConnection = new Pair<int, int>(0, 0);
+        int[] idForConnection = new int[2] {0,0};
+
         Color[] colors = new Color[5] { Color.LightGreen, Color.Red, Color.Blue, Color.Black, Color.Yellow };
         private void drawer(int colorId,Point conntect1, Point conntect2 )
         {
@@ -76,7 +77,7 @@ namespace AISTT
                 if(bossYaUstal.Name == buttonsNames[colorId])
                 {
                  
-                    connections.Add(new Connections<int, int, int>(idForConnection.First, idForConnection.Second, colorId));
+                    connections.Add(new Connections<int, int, int>(idForConnection[0], idForConnection[1], colorId));
                     drawer(colorId, conntect[0], conntect[1]);
                 }
             }
@@ -141,12 +142,12 @@ namespace AISTT
                     conntect[1].X = 0;
                     conntect[1].Y = 0;
                 }
-                if (idForConnection.First != 0)
+                if (idForConnection[0] != 0)
                 {
-                    idForConnection.First = 0;
+                    idForConnection[0] = 0;
                 }
                 else
-                    idForConnection.Second = 0;
+                    idForConnection[1] = 0;
             }
             else if (vertex < 2)
             {
@@ -155,12 +156,12 @@ namespace AISTT
                     conntect[0] = button.Location;
                 else
                     conntect[1] = button.Location;
-                if (idForConnection.First == 0)
+                if (idForConnection[0] == 0)
                 {
-                    idForConnection.First = Convert.ToInt32(button.Name);
+                    idForConnection[0] = Convert.ToInt32(button.Name);
                 }
                 else
-                    idForConnection.Second = Convert.ToInt32(button.Name);
+                    idForConnection[1] = Convert.ToInt32(button.Name);
                 button.BackColor = Color.Red;
             }
             else
@@ -182,20 +183,14 @@ namespace AISTT
         /// <param name="vertexes">хранит в себе все вершины</param>
         /// <param name="e">Хранит в себе текст который должен содержаться в вершине</param>
         /// <param name="position">Храните координаты кнопки</param>
-        /// <param name="width">Ширина кнопки</param>
-        /// <param name="hight">Высота кнопки</param>
         /// <param name="need">Проверка нужно ли сериализировать данную вершину</param>
         public void makeNewVertex(string e, Point position, bool need)
         {
-
-            // Point position = Cursor.Position;
             id++;
             Button temp = new Button();
             temp.Name = id.ToString();
-            //int hight = Convert.ToInt32(temp.Font.Size * 1);
-            //int weight = Convert.ToInt32(temp.Font.Size * e.Length + temp.Font.Size);
             temp.Text = e;
-            // temp.Size = size;
+          
             temp.AutoSize = false;
             temp.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             temp.Location = position;
@@ -212,7 +207,7 @@ namespace AISTT
             StackAdd(1);//Добавление в список последних действий
             //в список его для дальнейшей сериализации
             if (need)
-                Buttonns.Add(new Buttonn(temp.Text, position, id, new Pair<int, int>(temp.Width, temp.Height)));
+                Buttonns.Add(new Buttonn(temp.Text, position, id) );
             
         }
 
